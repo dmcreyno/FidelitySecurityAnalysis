@@ -1,0 +1,9 @@
+[submodule "sa-core"]
+	path = sa-core
+	url = git@github.com:dmcreyno/SecurityAnalysis.git
+[submodule "jfreechart"]
+	path = jfreechart
+	url = https://github.com/jfree/jfreechart.git
+[submodule "jwave"]
+	path = jwave
+	url = git@github.com:dmcreyno/JWave.git
