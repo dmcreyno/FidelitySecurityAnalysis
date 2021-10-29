@@ -17,6 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Reads the data for one day of trading and stores the stats. Keeps the trades
@@ -33,7 +34,7 @@ public class FidelityTradeDay extends com.cobbinterwebs.trades.TradeDay {
     public FidelityTradeDay(File pFile, Configuration pConfig) {
     	super(pFile,pConfig);
      }
-
+    
     /**
      * Reads the File for the day. Puts the trade dollar-volume in the
      * appropriate bucket.
@@ -69,8 +70,7 @@ public class FidelityTradeDay extends com.cobbinterwebs.trades.TradeDay {
                             log.fatal("BOOM!!!", e);
                             System.exit(-1);
                         }
-                        this.tradeList.add(tr);
-//                        distributeToBucket(tr);
+                        super.addTradeRecord(tr);
                     } catch (Exception e) {
                         log.error("error processing line {} in file {}", lineCounter,aFile.getName());
                         log.error("error processing data, \"{}\"", currentLine, e);

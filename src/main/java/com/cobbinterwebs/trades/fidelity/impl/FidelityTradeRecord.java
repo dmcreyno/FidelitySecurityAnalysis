@@ -25,11 +25,6 @@ public class FidelityTradeRecord extends TradeRecord {
 		static final int LAST_SIZE = 2;
 		static final int BID_PRICE = 3;
 		static final int ASK_PRICE = 4;
-//		static final int BID_SIZE = 5;
-//		static final int ASK_SIZE = 6;
-//		static final int BID_XCHANGE = 7;
-//		static final int ASK_XCHANGE = 8;
-//		static final int LAST_XCHANGE = 9;
 		static final int CONDITION = 10;
 	}
 	
