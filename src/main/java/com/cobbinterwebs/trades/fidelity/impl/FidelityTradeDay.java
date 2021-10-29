@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * Reads the data for one day of trading and stores the stats. Keeps the trades
  * in a list. Also, puts the dollar volume into <i>buckets</i> which are
  * defined in the configuration properties files.
- * TODO do not keep the trades in memory.
+ * 
  */
 public class FidelityTradeDay extends com.cobbinterwebs.trades.TradeDay {
     private static final Logger log = LogManager.getLogger(FidelityTradeDay.class);
