@@ -8,6 +8,42 @@
     <version>1.0-SNAPSHOT</version>
     <artifactId>fidelity-securities-analysis</artifactId>
 
+    <organization>
+        <name>Cobb Interwebs, LLC</name>
+        <url>http://www.cobbinterwebs.com</url>
+    </organization>
+    <inceptionYear>2021</inceptionYear>
+
+    <description>
+    	Example of how to use the Security Analysis library. This library depends on the Fidelity format for the CSV input.
+    </description>
+
+    <url>https://github.com/dmcreyno/SecurityAnalysis</url>
+    <issueManagement>
+        <url>https://github.com/dmcreyno/FidelitySecurityAnalysis/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+    <scm>
+        <connection>scm:git:git:https://github.com/dmcreyno/FidelitySecurityAnalysis.git</connection>
+        <url>https://github.com/dmcreyno/FidelitySecurityAnalysis</url>
+        <developerConnection>David McReynolds</developerConnection>
+    </scm>
+
+    <developers>
+      <developer>
+        <name>David McReynolds</name>
+        <email>david.mcreynolds@gmail.com</email>
+      </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>MIT License (MIT)</name>
+            <url>https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
