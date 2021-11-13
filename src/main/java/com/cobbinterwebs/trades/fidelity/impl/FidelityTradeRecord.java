@@ -37,8 +37,8 @@ import com.cobbinterwebs.trades.TradeRecord;
  * <li>Last Exchange</li>
  * <li>Trade Condition</li>
  * <ol>
- * @author Trader
- *
+ * @author Cobb Interwebs, LLC
+ * @see com.cobbinterwebs.trades.TradeRecord
  */
 public class FidelityTradeRecord extends TradeRecord {
 
@@ -125,7 +125,7 @@ public class FidelityTradeRecord extends TradeRecord {
 	
 	/**
 	 * The indexes used when parsing the csv data record.
-	 * @author Trader
+	 * @author Cobb Interwebs, LLC
 	 *
 	 */
 	public final static class Indexes {
