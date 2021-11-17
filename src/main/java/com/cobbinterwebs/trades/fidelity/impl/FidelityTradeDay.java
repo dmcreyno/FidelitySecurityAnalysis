@@ -34,8 +34,8 @@ public class FidelityTradeDay extends com.cobbinterwebs.trades.TradeDay {
     /**
      * The data comes as a CSV of trades for one day.
      */
-    public FidelityTradeDay(File pFile, Configuration pConfig) {
-    	super(pFile,pConfig);
+    public FidelityTradeDay(File pFile) {
+    	super(pFile);
      }
     
     /**
@@ -97,7 +97,7 @@ public class FidelityTradeDay extends com.cobbinterwebs.trades.TradeDay {
      */
     public class FidelityCSVInputReader {
         private final Logger log = LogManager.getLogger(FidelityCSVInputReader.class);
-        private final int LINE_NO_DATE = config.getDateLineNumber();
+        private final int LINE_NO_DATE = Configuration.getInstance().getDateLineNumber();
         private BufferedReader reader;
         private String dateStr;
         private final File file;
@@ -114,7 +114,7 @@ public class FidelityTradeDay extends com.cobbinterwebs.trades.TradeDay {
             log.info("Reading file {}", file.getCanonicalFile());
             reader = new BufferedReader(new FileReader(file));
             // throw away the first few lines (as set by getHeaderSkipLineCount)
-            for (int i = 0; i < config.getHeaderSkipLineCount(); i++) {
+            for (int i = 0; i < Configuration.getInstance().getHeaderSkipLineCount(); i++) {
                 String line = reader.readLine();
                 if(i == LINE_NO_DATE) { // the date line number. Date is read from file.
                     log.debug(DisplayKeys.get(DisplayKeys.PROCESSING_FILE_DATE), line);

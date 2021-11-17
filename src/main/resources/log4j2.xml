@@ -24,5 +24,8 @@
         <Logger name="com.cobbinterwebs.charts.wavlet.fidelity.impl" level="debug" additivity="false">
             <AppenderRef ref="STDOUT"/>
         </Logger>
+        <Logger name="com.cobbinterwebs.trades.TradeDay" level="debug" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
      </Loggers>
 </Configuration>

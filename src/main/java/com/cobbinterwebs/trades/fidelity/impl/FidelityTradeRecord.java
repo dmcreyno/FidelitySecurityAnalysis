@@ -115,9 +115,9 @@ public class FidelityTradeRecord extends TradeRecord {
 	public final void set(int year, int month, int date, int hourOfDay, int minute, int second) {
 		cal.set(year, month, date, hourOfDay, minute, second);
 	} /////////////////////////////////////		
-	///////////////////////////////////////
-	/////// END OF CALENDAR DELEGATES /////
-	///////////////////////////////////////	
+	  ///////////////////////////////////////
+	  /////// END OF CALENDAR DELEGATES /////
+	  ///////////////////////////////////////	
 
 	public static int HOUR = 0;
 	public static int SECOND = 1;

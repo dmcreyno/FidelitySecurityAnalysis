@@ -10,6 +10,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.cobbinterwebs.base.ConfigurationAware;
 import com.cobbinterwebs.chart.wavelet.IChartFileReader;
 import com.cobbinterwebs.chart.wavelet.IChartRecord;
 import com.cobbinterwebs.locale.DisplayKeys;
@@ -20,7 +21,8 @@ import com.cobbinterwebs.trades.config.Configuration;
  * @author Cobb Interwebs, LLC
  *
  */
-public class FidelityChartProcessor implements IChartFileReader {
+public class FidelityChartProcessor implements IChartFileReader, ConfigurationAware {
+	
 	static final Logger log = LogManager.getLogger("om.cobbinterwebs.chart.wavelet.fidelity.impl.FidelityChartProcessor");
 	List<IChartRecord> chartRecordList = new ArrayList<>();
 	
