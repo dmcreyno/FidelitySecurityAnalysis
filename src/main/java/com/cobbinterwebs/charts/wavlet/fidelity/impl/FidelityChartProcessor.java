@@ -16,6 +16,14 @@ import com.cobbinterwebs.chart.wavelet.IChartRecord;
 import com.cobbinterwebs.locale.DisplayKeys;
 import com.cobbinterwebs.trades.config.Configuration;
 
+import jwave.exceptions.JWaveException;
+import jwave.transforms.AncientEgyptianDecomposition;
+import jwave.transforms.BasicTransform;
+import jwave.transforms.FastWaveletTransform;
+import jwave.transforms.wavelets.Wavelet;
+import jwave.transforms.wavelets.haar.Haar1;
+
+
 /**
  * 
  * @author Cobb Interwebs, LLC
@@ -34,11 +42,6 @@ public class FidelityChartProcessor implements IChartFileReader, ConfigurationAw
      * needs this information to control maths.
      */
     protected Configuration config;
-
-    public FidelityChartProcessor(File pFile, Configuration pConfig) {
-    	aFile = pFile;
-    	config = pConfig;
-	}
 
     public FidelityChartProcessor(File pFile) {
     	aFile = pFile;
@@ -68,13 +71,14 @@ public class FidelityChartProcessor implements IChartFileReader, ConfigurationAw
 
                     try {
                         IChartRecord tr = IChartRecord.create(currentLine);
-                        if (log.isDebugEnabled()) log.debug("adding a trade . . . {}", tr);
+                        if (log.isDebugEnabled()) log.debug("adding a chart point . . . {}", tr);
                         if(null == tr) {
                             Exception e = new IllegalStateException();
                             log.fatal("BOOM!!!", e);
                             System.exit(-1);
                         }
                         chartRecordList.add(tr);
+                        
                     } catch (Exception e) {
                         log.error("error processing line {} in file {}", lineCounter,aFile.getName());
                         log.error("error processing data, \"{}\"", currentLine, e);
@@ -89,7 +93,43 @@ public class FidelityChartProcessor implements IChartFileReader, ConfigurationAw
         } finally {
             csvInputReader.close();
         }
+        
+        double[] arr = getOpenPriceArray();
+        try {
+			arr = doWaveletTransform(arr);
+			
+			for(int i =0; i < arr.length;i++) {
+				System.out.println(arr[i]);
+			}
+			
+		} catch (JWaveException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
     }
+
+	
+	double[] doWaveletTransform(double[] arrTime) throws JWaveException {
+		
+		Wavelet wavelet = new jwave.transforms.wavelets.haar.Haar1(); // consider externalizing the Wavelet class specification.
+		BasicTransform basicTransform = new FastWaveletTransform(wavelet);
+		AncientEgyptianDecomposition transform = new AncientEgyptianDecomposition(basicTransform);
+		double[] resultArr = transform.forward(arrTime);
+		return resultArr;
+	}
+
+
+	@Override
+	public double[] getOpenPriceArray() {
+		double [] rVal = new double[chartRecordList.size()];
+		
+		for(int i = 0; i < chartRecordList.size(); i++) {
+			rVal[i] = chartRecordList.get(i).getOpenPrice().doubleValue();
+		}
+		
+		return rVal;
+	}
 	
     /**
      * Wrapper around a buffered reader. While there is not much value in wrapping that class

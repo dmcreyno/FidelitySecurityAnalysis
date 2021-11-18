@@ -35,12 +35,11 @@ public class FidelityChartRecord extends AbstractChartRecord {
     public FidelityChartRecord(String pData) {
     	super(pData,',');
     	
-    	super.highPrice = new BigDecimal(rawTokens.get(Indexes.OPEN));
+    	super.openPrice = new BigDecimal(rawTokens.get(Indexes.OPEN));
     	super.highPrice = new BigDecimal(rawTokens.get(Indexes.HIGH));
-    	super.highPrice = new BigDecimal(rawTokens.get(Indexes.LOW));
-    	super.highPrice = new BigDecimal(rawTokens.get(Indexes.CLOSE));
-    	super.highPrice = new BigDecimal(rawTokens.get(Indexes.VOLUME));
-
+    	super.lowPrice = new BigDecimal(rawTokens.get(Indexes.LOW));
+    	super.closePrice = new BigDecimal(rawTokens.get(Indexes.CLOSE));
+    	super.volume = new BigInteger(rawTokens.get(Indexes.VOLUME));
     
     }
 
